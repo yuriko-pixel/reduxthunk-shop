@@ -22,14 +22,43 @@ import axios from 'axios'
   const initialState = {
         status: "idle",
         products: {},
-        cart: {},
+        cart: [],
+        cartItem: 0,
         error: {},
     };
     
     const ProductSlice = createSlice({
       name: "cart",
       initialState,
-      reducers: {},
+      reducers: {
+        incrementCart: (state,action) => {
+          state.cartItem++;
+          const item = state.cart.find(i=>i.id === action.payload)
+          if(item === undefined) {
+            const item2 = state.products.find(i => i.id === action.payload);
+            item2.count = 1;
+            state.cart.push(item2);
+          } else {
+            item.count += 1;
+          }
+        },
+        decrementCart: (state, action) => {
+          const item = state.cart.find(i=>i.id === action.payload);
+          if(item.count < 1) {
+            item.count -= 1;
+          } else if (item.count === 1) {
+            const index = state.cart.findIndex(i => i.id === action.payload);
+            state.cart.splice(index,1);
+          }
+          state.cartItem--;
+        },
+        deleteFromCart: (state, action) => {
+          const index = state.cart.findIndex(i => i.id === action.payload);
+          if(index === -1) return;
+          state.cart.splice(index,1);
+          state.cartItem--;
+        }
+      },
       extraReducers: (builder) => {
           builder.addCase(fetchProducts.fulfilled, (state, action) => {
               state.status = 'fulfilled';
@@ -38,7 +67,7 @@ import axios from 'axios'
       }
     });
 
-export const {incrementCart,decrementCart} = ProductSlice.actions;
+export const {incrementCart,decrementCart, deleteFromCart} = ProductSlice.actions;
 
 export const selectProducts = (state)=> state.products;
 export const selectCart = (state) => state.cart;

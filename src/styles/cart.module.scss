@@ -1,0 +1,51 @@
+
+ul,li {
+    list-style: none;
+}
+
+.itemul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.itemlist {
+    width: 210px;
+    height: 370px;
+    margin: 5px 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.imageframe {
+    height: 150px;
+    padding: 10px 0;
+}
+
+.info{
+    height: 190px;
+}
+
+.title {
+    height: 70px;
+    // white-space: nowrap;
+    overflow: hidden; 
+    // text-overflow: ellipsis;
+}
+
+.image {
+    width: 100px;
+}
+
+.price::before {
+    content: "$";
+}
+
+.btn {
+    background: orange;
+    border-radius: 5px;
+    color: darkslategray;
+}
+
+.flex {
+    display: flex;
+}
