@@ -1,14 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './App.css';
 import {useEffect} from 'react'
-import { fetchProducts } from './app/reducer';
-import Box from './components/Box'
-import Top from './components/Top'
+import { fetchProducts } from './ProductSlice';
+import Box from './Box'
+import Top from './Top'
+import { Provider } from 'react-redux';
+import store from '../app/store'
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 function App() {

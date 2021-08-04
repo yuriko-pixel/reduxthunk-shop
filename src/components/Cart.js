@@ -1,8 +1,8 @@
 import React from 'react'
-import { selectProducts, selectCart } from '../app/reducer';
+import { selectProducts, selectCart } from './ProductSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import cartstyle from '../styles/cart.module.scss'
-import { incrementCart } from '../app/reducer';
+import { incrementCart } from './ProductSlice';
 
 const Cart = () => {
     const cart = useSelector(selectProducts);

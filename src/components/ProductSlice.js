@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, combineReducers } from "@reduxjs/toolkit";
 import axios from 'axios'
 
 // export const fetchProducts = createAsyncThunk(
@@ -28,7 +28,7 @@ import axios from 'axios'
     };
     
     const ProductSlice = createSlice({
-      name: "cart",
+      name: "productReducer",
       initialState,
       reducers: {
         incrementCart: (state,action) => {
@@ -66,6 +66,10 @@ import axios from 'axios'
           })
       }
     });
+
+export const rootReducer = combineReducers({
+  productReducer : ProductSlice.reducer
+})
 
 export const {incrementCart,decrementCart, deleteFromCart} = ProductSlice.actions;
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector,useDispatch } from 'react-redux'
-import { selectCart } from '../app/reducer';
+import { selectCart } from './ProductSlice';
 
-import { incrementCart, decrementCart, deleteFromCart } from '../app/reducer';
+import { incrementCart, decrementCart, deleteFromCart } from './ProductSlice';
 import cartstyle from '../styles/cart.module.scss'
 
 const Box = () => {
